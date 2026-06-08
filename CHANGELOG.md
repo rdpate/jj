@@ -16,6 +16,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   `jj workspace add` uses `git worktree add --orphan`, which was added in
   2.42.0.
 
+* `fix.tools.<name>.ignore-empty-output` defaults to `true`, which means a tool
+  that outputs nothing on stdout will be ignored. It is considered safer to not
+  wipe out all contents of a file, which is why this defaults to `true`.
+
 ### Deprecations
 
 ### New features
@@ -31,6 +35,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   the workspace name. `enable` creates a Git worktree and `disable`
   removes it, allowing colocation to be toggled after workspace
   creation.
+
+* Added `fix.tools.<name>.ignore-empty-output` to allow a tool to be ignored if
+  its stdout is completely empty. This is to handle tools which output nothing
+  if no changes are needed instead of passing stdin through. The default is
+  `true`, which is a breaking change.
 
 ### Fixed bugs
 
