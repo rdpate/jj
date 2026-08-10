@@ -37,6 +37,9 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   where you need to pass multiple arguments to the tool, such as separate args
   for the range start and range end.
 
+* `jj git push` can now be configured to ask for confirmation before pushing
+  changes to a remote using `git.confirm-before-push`.
+
 ### Fixed bugs
 
 ## [0.45.1] - 2026-09-03
