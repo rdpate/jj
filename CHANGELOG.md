@@ -37,6 +37,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   where you need to pass multiple arguments to the tool, such as separate args
   for the range start and range end.
 
+* `jj git worktree adopt` adopts existing Git worktrees as jj
+  workspaces. With no arguments it adopts the worktree at the current
+  directory; with names it adopts specific worktrees; with `--all` it
+  adopts every unadopted worktree at once.
+
 ### Fixed bugs
 
 ## [0.45.1] - 2026-09-03
