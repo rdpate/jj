@@ -2551,6 +2551,18 @@ fn builtin_functions<'a, L: TemplateLanguage<'a> + ?Sized>() -> TemplateBuildFun
         Ok(L::Property::wrap_property(content))
     });
     map.insert("json", |language, diagnostics, build_ctx, function| {
+        if language
+            .settings()
+            .get_bool("ui.log-word-wrap")
+            .is_ok_and(|v| v)
+        {
+            diagnostics.add_warning(TemplateParseError::expression(
+                "Using `json` with ui.log-word-wrap=true may wrap its output, which might not be \
+                 desired",
+                function.name_span,
+            ));
+        }
+
         // TODO: Add pretty=true|false? or json(key=value, ..)? The latter might
         // be implemented as a map constructor/literal if we add support for
         // heterogeneous list/map types.
